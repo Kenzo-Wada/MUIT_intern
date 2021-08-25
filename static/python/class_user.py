@@ -1,4 +1,4 @@
-# ユーザを表すのクラス
+# ユーザを表すクラス
 class User():
     def __init__(self, id, name, point, history, reserve):
         self.id = id # ユーザID（識別番号）
