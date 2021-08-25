@@ -59,17 +59,26 @@
                 </section>
             </div>
             <!-- form -->
-            <div class="col-md-4 bg-light">
-                <form>
-                    <label>
-                        座席の種類
-                    </label>
-                    <input type="text">
-                    <label>
-                        人数
-                    </label>
-                    <input type="number">
-                </form>
+            <div class="col-md-4">
+                <div class="input-group row">
+                    <form>
+                        <div class="col-md-8">
+                            <label class="form-label col-form-label">座席の種類</label>
+                            <select class="form-select form-control" aria-label="Default select example">
+                                <option value="1">S</option>
+                                <option value="2">A</option>
+                                <option value="3">B</option>
+                                <option value="4">C</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label col-form-label">人数</label>
+                            <input class="form-control" type="number" value="1">
+                        </div>
+                        <br>
+                        <input class="btn btn-outline-primary" type="submit">
+                    </form>
+                </div>
             </div>
         </div>
 
