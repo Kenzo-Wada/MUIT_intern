@@ -4,6 +4,9 @@ from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 
+livelist = LiveList()
+list = livelist.live_list
+
 # ログインページ
 @app.route('/login')
 def show_login_page():
@@ -26,8 +29,8 @@ def check_login():
 # ライブ一覧ページ
 @app.route('/main')
 def show_main_page():
-    livelist = LiveList()
-    list = livelist.live_list
+    #livelist = LiveList()
+    #list = livelist.live_list
     print(list)
     return render_template('main.html',list_value = list)
 
@@ -35,7 +38,7 @@ def show_main_page():
 @app.route('/detail/<int:id>')
 def show_detail_page(id):
     print(id)
-    return render_template('detail.html')
+    return render_template('detail.html',live_id = id-1, list_value = list)
 
 # 予約完了ページ
 @app.route('/confirm_reservation', methods=['POST'])
