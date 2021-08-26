@@ -38,3 +38,6 @@ class Ticket():
     # flagを設定メソッド
     def set_flag(self, flag):
         self.flag = flag
+
+    def __str__(self):
+        return "<Ticket>"+"ticketId:"+str(self.ticketId)+"liveId:"+str(self.liveId)+"flag:"+str(self.flag)
