@@ -1,4 +1,5 @@
 from entity.class_ticket import Ticket
+from service import user_service, live_service, ticket_service
 from os import truncate
 from flask import Flask, render_template, redirect, request
 from FakeDB import DB
@@ -63,7 +64,12 @@ def show_profile_page():
 # マイページ : 申し込み一覧
 @app.route('/mypage/reserve')
 def show_reserve_page():
-    return render_template('reserve.html')
+    user_lives = user_service.get_tickets_by_userId(0, ticket_db)  # とりあえず最初の人の情報を扱う
+    if len(user_lives) == 0:
+        is_zero = True
+    else:
+        is_zero = False
+    return render_template('reserve.html', lives = user_lives, is_zero = is_zero)
 
 # マイページ : お知らせ
 @app.route('/mypage/news')
