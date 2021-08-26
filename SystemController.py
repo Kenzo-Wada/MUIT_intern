@@ -1,11 +1,16 @@
+from entity.class_ticket import Ticket
 from entity.class_liveList import LiveList
 from os import truncate
 from flask import Flask, render_template, redirect, request
+from FakeDB import DB
 
 app = Flask(__name__)
 
-livelist = LiveList()
-list = livelist.live_list
+db = DB()
+db.create_random_db(9)
+user_db = db.user_db
+live_db = db.live_db
+ticket_db = db.ticket_db
 
 # ログインページ
 @app.route('/login')
@@ -31,14 +36,14 @@ def check_login():
 def show_main_page():
     #livelist = LiveList()
     #list = livelist.live_list
-    print(list)
-    return render_template('main.html',list_value = list)
+    print(live_db)
+    return render_template('main.html',list_value = live_db)
 
 # ライブ詳細ページ
 @app.route('/detail/<int:id>')
 def show_detail_page(id):
     print(id)
-    return render_template('detail.html',live_id = id-1, list_value = list)
+    return render_template('detail.html',live_id = id-1, list_value = live_db)
 
 # 予約完了ページ
 @app.route('/confirm_reservation', methods=['POST'])
