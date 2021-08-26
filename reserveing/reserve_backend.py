@@ -19,17 +19,6 @@ tikets.append(tiket2)
 tikets.append(tiket3)
 tikets.append(tiket4)
 
-
-# userの持っているチケット一覧を表示
-query_userId = input("userIdを⼊⼒して下さい: ") # とりあえず標準入力で受け取る
-query_userId_split = query_userId.split()
-for query in query_userId_split:
-    for i in range (n_tikets):
-        if tikets[i].userId == int(query):
-            userId = tikets[i].userId
-            ticketId = tikets[i].ticketId
-            liveId = tikets[i].liveId
-            print('user id: ' + str(userId) + ',ticket id: ' + str(ticketId) + ',live id: ' + str(liveId))
 '''
 
 for i in range(n_tikets):
@@ -44,7 +33,16 @@ for i in range (n_tikets):
     if tikets[i].flag == 0:
         tikets[i].set_liveId(live_r)
         tikets[i].set_userId(user_r)
+        tikets[i].set_flag(1)
         break
 
-
-
+# userの持っているチケット一覧を表示
+query_userId = input("userIdを⼊⼒して下さい: ") # とりあえず標準入力で受け取る
+query_userId_split = query_userId.split()
+for query in query_userId_split:
+    for i in range (n_tikets):
+        if tikets[i].userId == int(query):
+            userId = tikets[i].userId
+            ticketId = tikets[i].ticketId
+            liveId = tikets[i].liveId
+            print('user id: ' + str(userId) + ',ticket id: ' + str(ticketId) + ',live id: ' + str(liveId))

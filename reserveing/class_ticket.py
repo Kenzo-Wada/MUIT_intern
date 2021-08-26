@@ -34,3 +34,7 @@ class Ticket():
     # ライブID（識別番号）を設定メソッド
     def set_liveId(self, liveId):
         self.liveId = liveId
+
+    # flagを設定メソッド
+    def set_flag(self, flag):
+        self.flag = flag
