@@ -43,11 +43,21 @@ def show_confirm_reservation_page():
 
     return render_template('confirm_reservation.html')
 
-# マイページ
-# 予約完了ページ
-@app.route('/mypage')
-def show_mypage():
-    return render_template('mypage.html')
+# マイページ : プロフィール
+@app.route('/mypage/profile')
+def show_profile_page():
+    return render_template('profile.html')
+
+# マイページ : 申し込み一覧
+@app.route('/mypage/reserve')
+def show_reserve_page():
+    return render_template('reserve.html')
+
+# マイページ : お知らせ
+@app.route('/mypage/news')
+def show_news_page():
+    return render_template('news.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
