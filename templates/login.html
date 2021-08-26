@@ -33,15 +33,15 @@
             <div class="col-md-6 container">
                 <div class="col container border">
                     <h1 class="p-5" style="text-align: center;">Sign in</h1>
-                    <form class="px-5">
+                    <form class="px-5" action="/check_login" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="" class="form-label"></label>
-                            <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId"
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId"
                                 placeholder="email">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label"></label>
-                            <input type="password" class="form-control" name="" id="" placeholder="password">
+                            <input type="password" class="form-control" name="passward" id="passward" placeholder="password">
                         </div>
                         <div class="mb-3 d-grid gap-2 pt-5">
                             <button class="btn btn-primary" type="submit">Sign in</button>
