@@ -5,7 +5,7 @@ class Ticket():
         self.userId = userId # ユーザID（識別番号）
         self.liveId = liveId # ライブID（識別番号）
         self.valid = valid # 抽選結果
-        self.flag = flag # 有効か否か
+        self.flag = flag # 予約済みか否か = 所有者が存在するか否か
 
     # チケットID（識別番号）を返すメソッド
     def get_ticketId(self):

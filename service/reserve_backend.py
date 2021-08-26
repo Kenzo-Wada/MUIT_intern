@@ -1,4 +1,4 @@
-import class_ticket
+from entity import class_ticket
 
 # チケットを管理するリスト
 tickets = []
