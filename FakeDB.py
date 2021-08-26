@@ -30,7 +30,12 @@ class DB():
             time = random.choice(self.time_candidate)
             date = random.choice(self.date_candidate)
             detail = ""
-            live = Live(idx+1, artist, charge, place, *time, date, detail)
+            if random.random() < 0.3:  # 限定ライブである確率
+                premium = 1
+            else:
+                premium = 0
+
+            live = Live(idx+1, artist, charge, place, *time, date, detail, premium)
             self.live_db.append(live)
     
     def create_random_ticket_db(self, num):
