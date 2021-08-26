@@ -1,5 +1,4 @@
 from entity.class_ticket import Ticket
-from entity.class_liveList import LiveList
 from os import truncate
 from flask import Flask, render_template, redirect, request
 from FakeDB import DB
