@@ -21,6 +21,7 @@ def lottery_ticket(tickets):
         ticket.set_valid(result)
 
 #抽選結果を表示する
+#ticketIdとboolを返す
 def view_lottery(user, tickets):
     tickets = get_tickets_by_userId(user, tickets)
     for ticket in tickets:
