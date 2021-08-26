@@ -93,7 +93,7 @@ def show_news_page():
 # 管理者画面
 @app.route('/admin')
 def show_admin_page():
-    return render_template('admin.html')
+    return render_template('admin.html', users=user_db, lives=live_db, tickets=ticket_db)
 
 # 抽選
 @app.route('/admin/lottery')
