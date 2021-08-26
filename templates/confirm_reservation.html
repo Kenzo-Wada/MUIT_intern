@@ -46,21 +46,21 @@
                         <tr>
                             <td>
                                 <span>
-                                    Bunp of Chicken
+                                    {{ list_value[live_id].get_name() }}
                                 </span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <span>
-                                    東京ドーム
+                                    {{ list_value[live_id].get_place() }}
                                 </span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <span>
-                                    17:00 - 20:00
+                                    {{ list_value[live_id].get_startTime() }} - {{ list_value[live_id].get_endTime() }}
                                 </span>
                             </td>
                         </tr>

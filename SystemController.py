@@ -55,7 +55,7 @@ def show_confirm_reservation_page(liveId):
     # TODO: チケット予約者の処理
     is_reserve = ticket_service.reserve_ticket(liveId, 0, ticket_db)  # 最初の人のみが取引する
     if is_reserve: # チケット予約できたとき
-        return render_template('confirm_reservation.html')
+        return render_template('confirm_reservation.html',live_id = liveId-1, list_value = live_db)
     else: # 予約できなかったとき
         # TODO
         pass
