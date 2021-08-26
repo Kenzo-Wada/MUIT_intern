@@ -33,8 +33,14 @@ def show_detail_page():
     return render_template('detail.html')
 
 # 予約完了ページ
-@app.route('/confirm_reservation')
+@app.route('/confirm_reservation', methods=['POST'])
 def show_confirm_reservation_page():
+
+    kind = request.form.get('kind') # 座席の種類
+    num = request.form.get('num') # 人数
+    print(kind, num)
+    # TODO: チケット購入者の処理
+
     return render_template('confirm_reservation.html')
 
 # マイページ
