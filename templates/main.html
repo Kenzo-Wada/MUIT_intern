@@ -86,11 +86,22 @@
                                             </span>
                                         </td>
                                     </tr>
+                                    {% if live.premium == 1 %}
+                                    <tr>
+                                        <td>
+                                            <span style="color: red; font-weight: bold;">
+                                                限定ライブ
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}   
+
 
                                 </table>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href ="/detail/{{live.get_id()}}" class="btn btn-sm btn-outline-secondary">詳細</a>
+                                        <a href="/detail/{{live.get_id()}}"
+                                            class="btn btn-sm btn-outline-secondary">詳細</a>
                                     </div>
                                     <small class="text-muted"> {{ live.get_charge() }} </small>
                                 </div>
