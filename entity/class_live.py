@@ -28,17 +28,18 @@ class Live():
         return self.place
 
     # 開演時間を返すメソッド
-    def get_time(self):
+    def get_startTime(self):
         return self.startTime
     
     # 終了時間を返すメソッド
-    def get_time(self):
+    def get_endTime(self):
         return self.endTime
     
     # 開場時間を返すメソッド
-    def get_time(self):
+    def get_open(self):
         return self.open
     
+    # 日付を返すメソッド
     def get_date(self):
         return self.date
 
