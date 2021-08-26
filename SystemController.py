@@ -84,6 +84,17 @@ def show_reserve_page():
 def show_news_page():
     return render_template('news.html')
 
+# 管理者画面
+@app.route('/admin')
+def show_admin_page():
+    return render_template('admin.html')
+
+# 抽選
+@app.route('/admin/lottery')
+def lottery():
+    ticket_service.lottery_tickets(ticket_db)
+    return render_template('admin.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
