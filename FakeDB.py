@@ -10,6 +10,7 @@ class DB():
 
     artist_candidate = ["Bunp of Chicken", "RADWIMPS", "ONE OK ROCK", "King Gnu"]
     charge_candidate = [5000, 7000, 8000, 8500, 10000]
+    point_candidate = [2, 3, 4]
     place_candidate = ["横浜アリーナ(神奈川)", "さいたまスーパーアリーナ(埼玉)", "東京ドーム(東京)"]
     time_candidate = [("13:00", "15:00", "11:30"), ("17:00", "20:00", "15:30"), ("13:00", "16:00", "12:00")]
     date_candidate = ["2021/9/18 (土)", "2021/9/19 (日)", "2021/9/20 (月)", "2021/9/26 (日)"]
@@ -25,17 +26,18 @@ class DB():
     def create_random_live_db(self, num):
         for idx in range(num):
             artist = random.choice(self.artist_candidate)
-            charge = random.choice(self.charge_candidate)
             place = random.choice(self.place_candidate)
             time = random.choice(self.time_candidate)
             date = random.choice(self.date_candidate)
             detail = ""
             if random.random() < 0.3:  # 限定ライブである確率
                 premium = 1
+                plice = random.choice(self.point_candidate)
             else:
                 premium = 0
+                plice = random.choice(self.charge_candidate)
 
-            live = Live(idx+1, artist, charge, place, *time, date, detail, premium)
+            live = Live(idx+1, artist, plice, place, *time, date, detail, premium)
             self.live_db.append(live)
     
     def create_random_ticket_db(self, num):
