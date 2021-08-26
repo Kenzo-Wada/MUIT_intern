@@ -63,12 +63,14 @@ def show_confirm_reservation_page(liveId):
 # マイページ : プロフィール
 @app.route('/mypage/profile')
 def show_profile_page():
-    return render_template('profile.html')
+    user_tickets = ticket_service.get_tickets_by_userId(0, ticket_db)
+    point = ticket_service.calc_point(user_tickets)
+    return render_template('profile.html', point=point)
 
 # マイページ : 申し込み一覧
 @app.route('/mypage/reserve')
 def show_reserve_page():
-    user_tickets = user_service.get_tickets_by_userId(0, ticket_db)  # とりあえず最初の人の情報を扱う
+    user_tickets = user_service.get_tickets_by_userId(0, ticket_db)  # TODO: とりあえず最初の人の情報を扱う
     if len(user_tickets) == 0:
         is_zero = True
     else:
@@ -77,7 +79,11 @@ def show_reserve_page():
     for ticket in user_tickets:
         live = live_service.get_live_by_liveId(ticket.liveId, live_db)
         user_lives.append(live)
-    return render_template('reserve.html', lives = user_lives, is_zero = is_zero)
+    ticket_live_set = []
+    for idx, ticket in enumerate(user_tickets):
+        ticket_live_set.append((ticket, user_lives[idx]))
+    print(*ticket_live_set)
+    return render_template('reserve.html', tickets_lives = ticket_live_set, is_zero = is_zero)
 
 # マイページ : お知らせ
 @app.route('/mypage/news')
@@ -93,7 +99,7 @@ def show_admin_page():
 @app.route('/admin/lottery')
 def lottery():
     ticket_service.lottery_tickets(ticket_db)
-    return render_template('admin.html')
+    return redirect("/admin")
 
 
 if __name__ == "__main__":

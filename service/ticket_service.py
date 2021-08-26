@@ -53,10 +53,10 @@ def reserve_ticket(live_r, user_r, tickets):
 
 #抽選をする
 def lottery_tickets(tickets):
-    waiting_tickets = get_tickets_by_flag(1)
+    waiting_tickets = get_tickets_by_flag(1, tickets)
     for ticket in waiting_tickets:
         result = random.randint(0,1)
-        ticket.set_valid(result)
+        ticket.valid = result
 
 # 抽選結果（ポイント）を計算する
 def calc_point(tickets):
