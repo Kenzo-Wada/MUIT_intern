@@ -86,12 +86,12 @@
             <!-- script -->
             <div class="col-md-8">
                 <section>
-                    <p class="fs-3 fw-bold">2021/9/20(月・祝)</p>
-                    <p class="fs-5">18:00 開演 ( 16:30 開場 )</p>
-                    <p class="fs-5">会場：大阪城ホール (大阪府)</p>
+                    <p class="fs-3 fw-bold"> {{ list_value[live_id].get_date() }} </p>
+                    <p class="fs-5">{{ list_value[live_id].get_startTime() }} 開演 ( {{ list_value[live_id].get_open() }} 開場 )</p>
+                    <p class="fs-5">会場：{{ list_value[live_id].get_place() }}</p>
 
-                    <p class="fs-5">Bunp of Chicken</p>
-                    <p class="fs-5">３歳以上はチケット必要。</p>
+                    <p class="fs-5">{{ list_value[live_id].get_name() }}</p>
+                    <p class="fs-5">{{ list_value[live_id].get_detail() }}</p>
                 </section>
             </div>
             <!-- form -->
