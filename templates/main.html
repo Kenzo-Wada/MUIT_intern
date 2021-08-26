@@ -53,6 +53,7 @@
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {% for live in list_value %}
                     <div class="col">
                         <div class="card shadow-sm">
                             <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
@@ -67,21 +68,21 @@
                                     <tr>
                                         <td>
                                             <span>
-                                                Bunp of Chicken
+                                                {{ live.get_name() }}
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <span>
-                                                東京ドーム
+                                                {{ live.get_place() }}
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <span>
-                                                17:00 - 20:00
+                                                {{ live.get_startTime() }} - {{ live.get_endTime() }}
                                             </span>
                                         </td>
                                     </tr>
@@ -89,233 +90,14 @@
                                 </table>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
+                                        <a href ="/detail/{{live.get_id()}}" class="btn btn-sm btn-outline-secondary">詳細</a>
                                     </div>
-                                    <small class="text-muted">¥7,000</small>
+                                    <small class="text-muted"> {{ live.get_charge() }} </small>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                Bunp of Chicken
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                東京ドーム
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                17:00 - 20:00
-                                            </span>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                                    </div>
-                                    <small class="text-muted">¥7,000</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                Bunp of Chicken
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                東京ドーム
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                17:00 - 20:00
-                                            </span>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                                    </div>
-                                    <small class="text-muted">¥7,000</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                Bunp of Chicken
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                東京ドーム
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                17:00 - 20:00
-                                            </span>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                                    </div>
-                                    <small class="text-muted">¥7,000</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                Bunp of Chicken
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                東京ドーム
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                17:00 - 20:00
-                                            </span>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                                    </div>
-                                    <small class="text-muted">¥7,000</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg>
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                Bunp of Chicken
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                東京ドーム
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>
-                                                17:00 - 20:00
-                                            </span>
-                                        </td>
-                                    </tr>
-
-                                </table>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                                    </div>
-                                    <small class="text-muted">¥7,000</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
