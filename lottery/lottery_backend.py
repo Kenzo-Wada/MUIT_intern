@@ -42,8 +42,9 @@ if lottery_result == 'y':
     for i in range (n_tickets):
         # チケットにユーザが紐づけられている場合
         if int(userId) == tickets[i].userId :
-            # 既に登録済みはポイントを加算
-            user_point[int(userId)] += int(tickets[i].valid)
+            # ポイントを加算
+            if int(tickets[i].valid) == 0:
+                user_point[int(userId)] += 1
 
     for key,val in user_point.items():
         print("user:"+ str(key) + ",point:" + str(val))
