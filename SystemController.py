@@ -46,15 +46,19 @@ def show_detail_page(id):
     return render_template('detail.html',live_id = id-1, list_value = live_db)
 
 # 予約完了ページ
-@app.route('/confirm_reservation', methods=['POST'])
-def show_confirm_reservation_page():
+@app.route('/confirm_reservation/<int:liveId>', methods=['POST'])
+def show_confirm_reservation_page(liveId):
 
     kind = request.form.get('kind') # 座席の種類
     num = request.form.get('num') # 人数
     print(kind, num)
-    # TODO: チケット購入者の処理
-
-    return render_template('confirm_reservation.html')
+    # TODO: チケット予約者の処理
+    is_reserve = ticket_service.reserve_ticket(liveId, 0, ticket_db)  # 最初の人のみが取引する
+    if is_reserve: # チケット予約できたとき
+        return render_template('confirm_reservation.html')
+    else: # 予約できなかったとき
+        # TODO
+        pass
 
 # マイページ : プロフィール
 @app.route('/mypage/profile')
@@ -64,11 +68,15 @@ def show_profile_page():
 # マイページ : 申し込み一覧
 @app.route('/mypage/reserve')
 def show_reserve_page():
-    user_lives = user_service.get_tickets_by_userId(0, ticket_db)  # とりあえず最初の人の情報を扱う
-    if len(user_lives) == 0:
+    user_tickets = user_service.get_tickets_by_userId(0, ticket_db)  # とりあえず最初の人の情報を扱う
+    if len(user_tickets) == 0:
         is_zero = True
     else:
         is_zero = False
+    user_lives = []
+    for ticket in user_tickets:
+        live = live_service.get_live_by_liveId(ticket.liveId, live_db)
+        user_lives.append(live)
     return render_template('reserve.html', lives = user_lives, is_zero = is_zero)
 
 # マイページ : お知らせ

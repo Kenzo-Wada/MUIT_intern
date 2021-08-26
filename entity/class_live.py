@@ -50,3 +50,6 @@ class Live():
     
     def get_premium(self):
         return self.Premium
+    
+    def __str__(self):
+        return "<Live>"+"id:"+str(self.id)
