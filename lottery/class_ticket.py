@@ -4,8 +4,8 @@ class Ticket():
         self.ticketId = ticketId # チケットID（識別番号）
         self.userId = userId # ユーザID（識別番号）
         self.liveId = liveId # ライブID（識別番号）
-        self.valid = valid # 抽選結果 0:落選, 1:当選, 2:未定
-        self.flag = flag # 予約済みか否か = 所有者が存在するか否か
+        self.valid = valid # 抽選結果
+        self.flag = flag # 有効か否か
 
     # チケットID（識別番号）を返すメソッド
     def get_ticketId(self):
@@ -35,9 +35,10 @@ class Ticket():
     def set_liveId(self, liveId):
         self.liveId = liveId
 
+    # 抽選結果を設定メソッド
+    def set_valid(self, valid):
+        self.valid = valid 
+
     # flagを設定メソッド
     def set_flag(self, flag):
         self.flag = flag
-
-    def __str__(self):
-        return "<Ticket>"+"ticketId:"+str(self.ticketId)+"liveId:"+str(self.liveId)+"flag:"+str(self.flag)
