@@ -25,7 +25,7 @@ for i in range(n_tikets):
     # 仮のオブジェクトを⽣成し，リストに追加
     tikets.append(class_ticket.Ticket(i, 0, 0, 3, 0))
 
-query_reserve = input("liveIdとuserId⼊⼒して下さい: ") # とりあえず標準入力で受け取る
+query_reserve = input("liveIdとuserIdを空白区切りで⼊⼒して下さい: ") # とりあえず標準入力で受け取る
 query_reserve_split = query_reserve.split()
 live_r = int(query_reserve_split[0])
 user_r = int(query_reserve_split[1])
