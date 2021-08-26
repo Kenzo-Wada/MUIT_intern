@@ -1,6 +1,6 @@
 # liveを表すのクラス
 class Live():
-    def __init__(self, id, name, charge, place, startTime, endTime, open, date, detail):
+    def __init__(self, id, name, charge, place, startTime, endTime, open, date, detail, premium):
         self.id = id # ライブID
         self.name = name # 名前
         self.charge = charge # 料金
@@ -10,6 +10,7 @@ class Live():
         self.open = open # 開場時間
         self.date = date # 日付
         self.detail = detail # 説明文
+        self.premium = premium # 限定ライブかどうか
 
     # ライブID（識別番号）を返すメソッド
     def get_id(self):
@@ -46,3 +47,6 @@ class Live():
     # 説明文を返すメソッド
     def get_detail(self):
         return self.detail
+    
+    def get_premium(self):
+        return self.Premium
