@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect
+from os import truncate
+from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 
@@ -8,10 +9,18 @@ def show_login_page():
     return render_template('login.html')
 
 # ログイン情報チェック
-@app.route('/check_login')
+@app.route('/check_login', methods=['POST'])
 def check_login():
-    # TODO: とりあえず、みんなログインできる
-    return redirect('/main')
+    print(request.form)
+
+    email = request.form.get('email')
+    passward = request.form.get('passward')
+
+    if True:
+        # TODO: とりあえず、みんなログインできる
+        return redirect('/main')
+    else:
+        return redirect('/login')
 
 # ライブ一覧ページ
 @app.route('/main')
