@@ -1,3 +1,4 @@
+from entity.class_liveList import LiveList
 from os import truncate
 from flask import Flask, render_template, redirect, request
 
@@ -25,11 +26,15 @@ def check_login():
 # ライブ一覧ページ
 @app.route('/main')
 def show_main_page():
-    return render_template('main.html')
+    livelist = LiveList()
+    list = livelist.live_list
+    print(list)
+    return render_template('main.html',list_value = list)
 
 # ライブ詳細ページ
-@app.route('/detail')
-def show_detail_page():
+@app.route('/detail/<int:id>')
+def show_detail_page(id):
+    print(id)
     return render_template('detail.html')
 
 # 予約完了ページ
