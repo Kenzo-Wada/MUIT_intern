@@ -30,6 +30,7 @@ def reserve_ticket(live_r, user_r, tickets):
         if ticket.flag == 0:
             ticket.set_userId(user_r)
             ticket.set_flag(1)
+            ticket.flag = True
             break
     else:
         return False
