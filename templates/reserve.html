@@ -114,6 +114,15 @@
                                             </span>
                                         </td>
                                     </tr>
+                                    <!-- 購入済み状態 -->
+                                    {% if ticket.valid == 3 %}
+                                    <tr>
+                                        <td>
+                                            <span style="color: red; font-weight: bold;">
+                                                購入済み
+                                            </span>
+                                        </td>
+                                    </tr>
                                     {% endif %}
                                     {% if live.premium == 1 %}
                                     <tr>
