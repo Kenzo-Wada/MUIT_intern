@@ -9,7 +9,7 @@ class DB():
     ticket_db = []
 
     artist_candidate = ["Bunp of Chicken", "RATWINPS", "ONE OK LOCK", "King Muu"]
-    charge_candidate = [5000, 7000, 8000, 8500, 10000]
+    charge_candidate = [3000, 4000, 5000, 7000, 8000, 8500]
     point_candidate = [2, 3, 4]
     place_candidate = ["横浜アリーナ(神奈川)", "さいたまスーパーアリーナ(埼玉)", "東京ドーム(東京)"]
     time_candidate = [("13:00", "15:00", "11:30"), ("17:00", "20:00", "15:30"), ("13:00", "16:00", "12:00")]
