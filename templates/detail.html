@@ -91,6 +91,9 @@
                     <p class="fs-5">会場：{{ list_value[live_id].get_place() }}</p>
 
                     <p class="fs-5">{{ list_value[live_id].get_name() }}</p>
+                    {% if list_value[live_id].premium != 1 %}
+                        <p class="fs-5">¥ {{ list_value[live_id].get_charge() }}</p>
+                    {% endif %}
                     <p class="fs-5">{{ list_value[live_id].get_detail() }}</p>
                 </section>
             </div>
