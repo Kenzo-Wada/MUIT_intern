@@ -103,7 +103,11 @@
                                         <a href="/detail/{{live.get_id()}}"
                                             class="btn btn-sm btn-outline-secondary">詳細</a>
                                     </div>
-                                    <small class="text-muted"> {{ live.get_charge() }} </small>
+                                    {% if live.premium == 1 %}
+                                        <small class="text-muted"> {{ live.get_charge() }} pt</small>
+                                    {% else %}
+                                        <small class="text-muted"> ¥ {{ live.get_charge() }} </small>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
