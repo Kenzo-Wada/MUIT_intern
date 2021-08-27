@@ -87,7 +87,10 @@ def lottery_tickets(tickets):
     waiting_tickets = get_tickets_by_valid(2, tickets)
     for ticket in waiting_tickets:
         if ticket.flag == 1: # チケット状態が未定　かつ　所有者がいる
-            result = random.randint(0,1)
+            if random.random() < 0.7: # 高い確率で外れる
+                result = 0
+            else:
+                result = 1
             ticket.valid = result
 
 # 抽選結果（ポイント）を計算する

@@ -67,6 +67,21 @@ def show_confirm_reservation_page(liveId):
         # TODO
         pass
 
+# 購入完了ページ
+@app.route('/confirm_reservation/<int:liveId>', methods=['POST'])
+def show_confirm_reservation_limit_page(liveId):
+
+    kind = request.form.get('kind') # 座席の種類
+    num = request.form.get('num') # 人数
+    print(kind, num)
+    # TODO: チケット予約者の処理
+    is_reserve = ticket_service.reserve_ticket(liveId, 0, ticket_db)  # 最初の人のみが取引する
+    if is_reserve: # チケット予約できたとき
+        return render_template('confirm_reservation.html',live_id = liveId-1, list_value = live_db)
+    else: # 予約できなかったとき
+        # TODO
+        pass
+
 # マイページ : プロフィール
 @app.route('/mypage/profile')
 def show_profile_page():
