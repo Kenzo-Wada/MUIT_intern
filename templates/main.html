@@ -94,19 +94,24 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    {% endif %}   
+                                    {% endif %}
 
 
                                 </table>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
+                                        {% if live.premium == 1 %}
+                                        <a href="/detail/limit/{{live.get_id()}}"
+                                            class="btn btn-sm btn-outline-secondary">詳細</a>
+                                        {% else %}
                                         <a href="/detail/{{live.get_id()}}"
                                             class="btn btn-sm btn-outline-secondary">詳細</a>
+                                        {% endif %}
                                     </div>
                                     {% if live.premium == 1 %}
-                                        <small class="text-muted"> {{ live.get_charge() }} pt</small>
+                                    <small class="text-muted"> {{ live.get_charge() }} pt</small>
                                     {% else %}
-                                        <small class="text-muted"> ¥ {{ live.get_charge() }} </small>
+                                    <small class="text-muted"> ¥ {{ live.get_charge() }} </small>
                                     {% endif %}
                                 </div>
                             </div>

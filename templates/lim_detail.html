@@ -97,7 +97,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group row">
-                    <form action="/confirm_reservation", method="POST">
+                    <form action="/confirm_buy/{{list_value[live_id].id}}", method="POST">
                         <div class="col-md-8">
                             <label class="form-label col-form-label">座席の種類</label>
                             <select class="form-select form-control" name="kind" aria-label="Default select example">
@@ -105,7 +105,11 @@
                             </select>
                         </div>
                         <br>
-                        <input class="btn btn-outline-primary" type="submit">
+                        {% if can_buy %}
+                        <input class="btn btn-outline-primary" type="submit" value="ポイントで購入">
+                        {% else %}
+                        <input class="btn btn-outline-dark disabled" type="submit" value="ポイントで購入">
+                        {% endif %}
                     </form>
                 </div>
             </div>
