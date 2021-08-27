@@ -21,3 +21,16 @@ class User():
     # チケット履歴(ticket list)を返すメソッド
     def get_history(self):
         return self.history
+
+    # ポイントを減らし、新たにセットするメソッド
+    # ０未満の場合はFalseを返す
+    def decrease_point(self, point):
+        new_point = self.point - point
+        if new_point < 0:
+            return False
+        else:
+            self.point = new_point
+
+    # ポイントを増やし、新たにセットするメソッド
+    def increase_point(self, point):
+        self.point = self.point + point
