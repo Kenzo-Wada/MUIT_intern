@@ -65,7 +65,7 @@ def reserve_ticket(live_r, user_r, tickets):
     return True
 
 # 購入する
-def reserve_ticket(ticketId, userId, tickets):
+def buy_ticket(ticketId, userId, tickets):
     """チケットを購入する
     本来であれば限定ライブに限った話ではないが、今回買えるのは限定ライブのみとする
     """
