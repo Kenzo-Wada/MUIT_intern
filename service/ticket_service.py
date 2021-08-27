@@ -1,4 +1,7 @@
 import random
+from service.live_service import get_live_by_liveId, get_live_by_ticket
+from service.user_service import *
+
 
 def get_tickets_by_liveId(liveId, tickets):
     """ライブIDが合致するチケットを取得する
@@ -10,6 +13,7 @@ def get_tickets_by_liveId(liveId, tickets):
     """
     live_tickets = []
     for ticket in tickets:
+        print(ticket)
         if ticket.liveId == liveId:
             live_tickets.append(ticket)
     return live_tickets
@@ -65,21 +69,19 @@ def reserve_ticket(live_r, user_r, tickets):
     return True
 
 # 購入する
-def buy_ticket(ticketId, userId, tickets):
+def buy_ticket(userId, liveId, lives, tickets):
     """チケットを購入する
     本来であれば限定ライブに限った話ではないが、今回買えるのは限定ライブのみとする
     """
     
-    selected_ticket = get_ticket_by_ticketId(ticketId, tickets)
-    
-    # TODO: このチケットのライブが、限定ライブであるかどうかの判定
-    if selected_ticket.flag == 0: # まだ所有者がいない
-        selected_ticket.flag = 1
-        selected_ticket.userId = userId
-        selected_ticket.valid = 3 # 購入済み
-        return True
-    else:
-        return False
+    live = get_live_by_liveId(liveId, lives)
+    live_tickets = get_tickets_by_liveId(liveId, tickets) # 求めているライブのチケット
+    valid_live_tickets = get_tickets_by_flag(0, live_tickets) # そのうち空きのあるもの
+    item_ticket = valid_live_tickets[0]
+    item_ticket.userId = userId
+    item_ticket.valid = 3
+    item_ticket.flag = 1
+    return True
 
 
 #抽選をする
@@ -94,7 +96,7 @@ def lottery_tickets(tickets):
             ticket.valid = result
 
 # 抽選結果（ポイント）を計算する
-def calc_point(tickets):
+def calc_point(tickets, lives):
     """
 
     Args:
@@ -108,4 +110,7 @@ def calc_point(tickets):
         if ticket.valid == 0: # 落選していれば、加算
             # TODO: 落選は全て1ポイントの加算
             point += 1
+        if ticket.valid == 3: # 購入済のとき
+            charge = get_live_by_ticket(ticket, lives).charge
+            point -= charge
     return point

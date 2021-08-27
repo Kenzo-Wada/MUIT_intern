@@ -47,7 +47,8 @@ def show_detail_page(id):
 # 限定ライブ詳細ページ
 @app.route('/detail/limit/<int:id>')
 def show_detail_limit_page(id):
-    can_buy = user_service.can_buy_ticket(0, id, user_db, live_db)
+    print("liveId:", id)
+    can_buy = user_service.can_buy_ticket(0, id, user_db, live_db, ticket_db)
     print(can_buy)
     return render_template('lim_detail.html',live_id = id-1, list_value = live_db, can_buy = can_buy)
 
@@ -68,16 +69,12 @@ def show_confirm_reservation_page(liveId):
         pass
 
 # 購入完了ページ
-@app.route('/confirm_reservation/<int:liveId>', methods=['POST'])
-def show_confirm_reservation_limit_page(liveId):
+@app.route('/confirm_buy/<int:liveId>', methods=['POST'])
+def show_confirm_buyt_page(liveId):
 
-    kind = request.form.get('kind') # 座席の種類
-    num = request.form.get('num') # 人数
-    print(kind, num)
-    # TODO: チケット予約者の処理
-    is_reserve = ticket_service.reserve_ticket(liveId, 0, ticket_db)  # 最初の人のみが取引する
-    if is_reserve: # チケット予約できたとき
-        return render_template('confirm_reservation.html',live_id = liveId-1, list_value = live_db)
+    is_buy = ticket_service.buy_ticket(0, liveId, live_db, ticket_db)
+    if is_buy: # チケット予約できたとき
+        return render_template('lim_conf.html',live_id = liveId-1, list_value = live_db)
     else: # 予約できなかったとき
         # TODO
         pass
@@ -86,7 +83,7 @@ def show_confirm_reservation_limit_page(liveId):
 @app.route('/mypage/profile')
 def show_profile_page():
     user_tickets = ticket_service.get_tickets_by_userId(0, ticket_db)
-    point = ticket_service.calc_point(user_tickets)
+    point = ticket_service.calc_point(user_tickets, live_db)
     return render_template('profile.html', point=point)
 
 # マイページ : 申し込み一覧
@@ -122,7 +119,7 @@ def show_admin_page():
 def lottery():
     ticket_service.lottery_tickets(ticket_db)
     # TODO: 時間がないので応急処置 このままだと、ユーザ全員が同じポイント数
-    user_db[0].point = ticket_service.calc_point(ticket_db)
+    user_db[0].point = ticket_service.calc_point(ticket_db, live_db)
     return redirect("/admin")
 
 
