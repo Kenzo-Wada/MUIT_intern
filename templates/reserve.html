@@ -47,12 +47,11 @@
         </div>
         <div class="album py-5 bg-light">
             <div class="container">
-
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {% if is_zero == True %}
-                        <p>まだ予約したチケットはありません。</p>
+                    {% if is_zero %}
+                    <span>まだチケットを1つも所持していません</span>
                     {% endif %}
-                    {% for live in lives %}
+                    {% for (ticket, live) in tickets_lives %}
                     <div class="col">
                         
                         <div class="card shadow-sm">
@@ -86,6 +85,36 @@
                                             </span>
                                         </td>
                                     </tr>
+                                    <!-- 落選 -->
+                                    {% if ticket.valid == 0 %}
+                                    <tr>
+                                        <td>
+                                            <span style="color: blue; font-weight: bold;">
+                                                落選
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    <!-- 当選 -->
+                                    {% if ticket.valid == 1 %}
+                                    <tr>
+                                        <td>
+                                            <span style="color: red; font-weight: bold;">
+                                                当選
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    <!-- 待ち状態 -->
+                                    {% if ticket.valid == 2 %}
+                                    <tr>
+                                        <td>
+                                            <span style="color: orange; font-weight: bold;">
+                                                抽選まち
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
                                     {% if live.premium == 1 %}
                                     <tr>
                                         <td>
