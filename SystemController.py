@@ -20,7 +20,6 @@ def show_login_page():
 # ログイン情報チェック
 @app.route('/check_login', methods=['POST'])
 def check_login():
-    print(request.form)
 
     email = request.form.get('email')
     passward = request.form.get('passward')
@@ -36,14 +35,21 @@ def check_login():
 def show_main_page():
     #livelist = LiveList()
     #list = livelist.live_list
-    print(live_db)
+
     return render_template('main.html',list_value = live_db)
 
 # ライブ詳細ページ
 @app.route('/detail/<int:id>')
 def show_detail_page(id):
-    print(id)
+
     return render_template('detail.html',live_id = id-1, list_value = live_db)
+
+# 限定ライブ詳細ページ
+@app.route('/detail/limit/<int:id>')
+def show_detail_limit_page(id):
+
+    return render_template('lim_detail.html',live_id = id-1, list_value = live_db)
+
 
 # 予約完了ページ
 @app.route('/confirm_reservation/<int:liveId>', methods=['POST'])
