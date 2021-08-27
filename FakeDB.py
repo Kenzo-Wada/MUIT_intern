@@ -8,7 +8,7 @@ class DB():
     live_db = []
     ticket_db = []
 
-    artist_candidate = ["Bunp of Chicken", "RADWIMPS", "ONE OK ROCK", "King Gnu"]
+    artist_candidate = ["Bunp of Chicken", "RATWINPS", "ONE OK LOCK", "King Muu"]
     charge_candidate = [5000, 7000, 8000, 8500, 10000]
     point_candidate = [2, 3, 4]
     place_candidate = ["横浜アリーナ(神奈川)", "さいたまスーパーアリーナ(埼玉)", "東京ドーム(東京)"]
