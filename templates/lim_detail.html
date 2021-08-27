@@ -92,10 +92,22 @@
 
                     <p class="fs-5">Bunp of Chicken</p>
                     <p class="fs-5">３歳以上はチケット必要。</p>
+                    <p class="fs-5">金額：7000</p>
                 </section>
             </div>
-            <div class="col-md-8">
-                <button type="button" class="btn btn-primary">購入</button>
+            <div class="col-md-4">
+                <div class="input-group row">
+                    <form action="/confirm_reservation", method="POST">
+                        <div class="col-md-8">
+                            <label class="form-label col-form-label">座席の種類</label>
+                            <select class="form-select form-control" name="kind" aria-label="Default select example">
+                                <option value="S">オンライン</option>
+                            </select>
+                        </div>
+                        <br>
+                        <input class="btn btn-outline-primary" type="submit">
+                    </form>
+                </div>
             </div>
         </div>
 
