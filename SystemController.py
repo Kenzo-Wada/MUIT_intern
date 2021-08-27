@@ -74,6 +74,7 @@ def show_confirm_buyt_page(liveId):
 
     is_buy = ticket_service.buy_ticket(0, liveId, live_db, ticket_db)
     if is_buy: # チケット予約できたとき
+        user_service.calc_users_point(user_db, live_db, ticket_db)
         return render_template('lim_conf.html',live_id = liveId-1, list_value = live_db)
     else: # 予約できなかったとき
         # TODO
@@ -118,8 +119,7 @@ def show_admin_page():
 @app.route('/admin/lottery')
 def lottery():
     ticket_service.lottery_tickets(ticket_db)
-    # TODO: 時間がないので応急処置 このままだと、ユーザ全員が同じポイント数
-    user_db[0].point = ticket_service.calc_point(ticket_db, live_db)
+    user_service.calc_users_point(user_db, live_db, ticket_db)
     return redirect("/admin")
 
 

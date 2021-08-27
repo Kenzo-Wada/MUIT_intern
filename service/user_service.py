@@ -1,5 +1,5 @@
 from service.live_service import get_live_by_liveId
-from service.ticket_service import get_tickets_by_liveId, get_tickets_by_flag
+from service.ticket_service import *
 
 def get_user_by_userId(userId, users):
     for user in users:
@@ -22,6 +22,8 @@ def can_buy_ticket(userId, liveId, users, lives, tickets):
     print("ライブのチケット数", len(live_tickets))
     valid_live_tickets = get_tickets_by_flag(0, live_tickets) # そのうち空きのあるもの
     print("残りチケット数", len(valid_live_tickets))
+    print("ポイント", buyer.point)
+    print("コスト", live.charge)
     if len(valid_live_tickets) == 0:
         return False
     else:
@@ -29,3 +31,8 @@ def can_buy_ticket(userId, liveId, users, lives, tickets):
             return True
         else:
             return False
+
+def calc_users_point(users, lives, tickets):
+    for user in users:
+        user_tickets = get_tickets_by_userId(user.id, tickets)
+        user.point = calc_point(user_tickets, lives)
