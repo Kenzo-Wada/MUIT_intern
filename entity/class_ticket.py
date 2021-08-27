@@ -4,7 +4,7 @@ class Ticket():
         self.ticketId = ticketId # チケットID（識別番号）
         self.userId = userId # ユーザID（識別番号）
         self.liveId = liveId # ライブID（識別番号）
-        self.valid = valid # 抽選結果 0:落選, 1:当選, 2:未定
+        self.valid = valid # 抽選結果 0:落選, 1:当選, 2:未定 3:購入済み
         self.flag = flag # 予約済みか否か = 所有者が存在するか否か
 
     # チケットID（識別番号）を返すメソッド
