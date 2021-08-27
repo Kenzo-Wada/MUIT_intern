@@ -22,6 +22,8 @@ def can_buy_ticket(userId, liveId, users, lives, tickets):
     print("ライブのチケット数", len(live_tickets))
     valid_live_tickets = get_tickets_by_flag(0, live_tickets) # そのうち空きのあるもの
     print("残りチケット数", len(valid_live_tickets))
+    print("ポイント", buyer.point)
+    print("コスト", live.charge)
     if len(valid_live_tickets) == 0:
         return False
     else:
