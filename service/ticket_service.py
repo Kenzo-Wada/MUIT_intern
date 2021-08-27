@@ -14,12 +14,26 @@ def get_tickets_by_liveId(liveId, tickets):
             live_tickets.append(ticket)
     return live_tickets
 
+def get_ticket_by_ticketId(ticketId, tickets):
+    for ticket in tickets:
+        if ticket.ticketId == ticketId:
+            return ticket
+    else:
+        return False # 存在しない
+
 def get_tickets_by_flag(flag, tickets):
     flag_tickets = []
     for ticket in tickets:
         if ticket.flag == flag:
             flag_tickets.append(ticket)
     return flag_tickets
+
+def get_tickets_by_valid(valid, tickets):
+    valid_tickets = []
+    for ticket in tickets:
+        if ticket.valid == valid:
+            valid_tickets.append(ticket)
+    return valid_tickets
 
 def get_tickets_by_userId(userId, tickets):
     user_tickets = []
@@ -40,7 +54,6 @@ def reserve_ticket(live_r, user_r, tickets):
     """
     
     live_tickets = get_tickets_by_liveId(live_r, tickets)
-    print(live_tickets)
     for ticket in live_tickets:
         if ticket.flag == 0:
             ticket.set_userId(user_r)
@@ -51,12 +64,31 @@ def reserve_ticket(live_r, user_r, tickets):
 
     return True
 
+# 購入する
+def buy_ticket(ticketId, userId, tickets):
+    """チケットを購入する
+    本来であれば限定ライブに限った話ではないが、今回買えるのは限定ライブのみとする
+    """
+    
+    selected_ticket = get_ticket_by_ticketId(ticketId, tickets)
+    
+    # TODO: このチケットのライブが、限定ライブであるかどうかの判定
+    if selected_ticket.flag == 0: # まだ所有者がいない
+        selected_ticket.flag = 1
+        selected_ticket.userId = userId
+        selected_ticket.valid = 3 # 購入済み
+        return True
+    else:
+        return False
+
+
 #抽選をする
 def lottery_tickets(tickets):
-    waiting_tickets = get_tickets_by_flag(1, tickets)
+    waiting_tickets = get_tickets_by_valid(2, tickets)
     for ticket in waiting_tickets:
-        result = random.randint(0,1)
-        ticket.valid = result
+        if ticket.flag == 1: # チケット状態が未定　かつ　所有者がいる
+            result = random.randint(0,1)
+            ticket.valid = result
 
 # 抽選結果（ポイント）を計算する
 def calc_point(tickets):
