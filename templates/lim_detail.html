@@ -105,7 +105,11 @@
                             </select>
                         </div>
                         <br>
-                        <input class="btn btn-outline-primary" type="submit">
+                        {% if can_buy %}
+                        <input class="btn btn-outline-primary" type="submit" value="ポイントで購入">
+                        {% else %}
+                        <input class="btn btn-outline-dark disabled" type="submit" value="ポイントで購入">
+                        {% endif %}
                     </form>
                 </div>
             </div>

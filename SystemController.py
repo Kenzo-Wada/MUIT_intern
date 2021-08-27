@@ -47,8 +47,9 @@ def show_detail_page(id):
 # 限定ライブ詳細ページ
 @app.route('/detail/limit/<int:id>')
 def show_detail_limit_page(id):
-
-    return render_template('lim_detail.html',live_id = id-1, list_value = live_db)
+    can_buy = user_service.can_buy_ticket(0, id, user_db, live_db)
+    print(can_buy)
+    return render_template('lim_detail.html',live_id = id-1, list_value = live_db, can_buy = can_buy)
 
 
 # 予約完了ページ
@@ -105,6 +106,8 @@ def show_admin_page():
 @app.route('/admin/lottery')
 def lottery():
     ticket_service.lottery_tickets(ticket_db)
+    # TODO: 時間がないので応急処置 このままだと、ユーザ全員が同じポイント数
+    user_db[0].point = ticket_service.calc_point(ticket_db)
     return redirect("/admin")
 
 
